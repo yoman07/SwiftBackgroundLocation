@@ -1,0 +1,12 @@
+use_frameworks!
+
+target 'SwiftBackgroundLocation_Example' do
+  pod 'SwiftBackgroundLocation', :path => '../'
+
+  target 'SwiftBackgroundLocation_Tests' do
+    inherit! :search_paths
+
+    pod 'Quick', '~> 1.0.0'
+  pod 'Nimble', '~> 5.1.1'
+  end
+end
