@@ -1,0 +1,6 @@
+framework module Pods_SwiftBackgroundLocation_Tests {
+  umbrella header "Pods-SwiftBackgroundLocation_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

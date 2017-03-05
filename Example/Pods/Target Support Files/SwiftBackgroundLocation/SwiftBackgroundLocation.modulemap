@@ -1,0 +1,6 @@
+framework module SwiftBackgroundLocation {
+  umbrella header "SwiftBackgroundLocation-umbrella.h"
+
+  export *
+  module * { export * }
+}

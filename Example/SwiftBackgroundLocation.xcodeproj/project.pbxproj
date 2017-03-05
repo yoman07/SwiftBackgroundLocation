@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		395B50761E6C3992009CDC8A /* BackgroundDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395B50721E6C3992009CDC8A /* BackgroundDebug.swift */; };
+		395B50771E6C3992009CDC8A /* LocationLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395B50731E6C3992009CDC8A /* LocationLogger.swift */; };
+		395B50781E6C3992009CDC8A /* Points+Hermite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395B50741E6C3992009CDC8A /* Points+Hermite.swift */; };
 		4A4B62F31E2F6A11B87493ED /* Pods_SwiftBackgroundLocation_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF2E1AD142B68EC847F92D20 /* Pods_SwiftBackgroundLocation_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		607FACEC1AFB9204008FA782 /* BackgroundLocationCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* BackgroundLocationCacheTests.swift */; };
 		FB4241E8641DFEFF9D4BBEA4 /* Pods_SwiftBackgroundLocation_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E105694B9DD33DB1F8E73A4A /* Pods_SwiftBackgroundLocation_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +31,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4224B0393D12E11971C46F4B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		395B50721E6C3992009CDC8A /* BackgroundDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundDebug.swift; sourceTree = "<group>"; };
+		395B50731E6C3992009CDC8A /* LocationLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationLogger.swift; sourceTree = "<group>"; };
+		395B50741E6C3992009CDC8A /* Points+Hermite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Points+Hermite.swift"; sourceTree = "<group>"; };
+		4224B0393D12E11971C46F4B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		4FB1DCABA1587B47816B2DC7 /* Pods-SwiftBackgroundLocation_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBackgroundLocation_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBackgroundLocation_Example/Pods-SwiftBackgroundLocation_Example.release.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* SwiftBackgroundLocation_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBackgroundLocation_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -39,14 +45,14 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* SwiftBackgroundLocation_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftBackgroundLocation_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		607FACEB1AFB9204008FA782 /* BackgroundLocationCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundLocationCacheTests.swift; sourceTree = "<group>"; };
 		7BFB3915B96221E0EB71191F /* Pods-SwiftBackgroundLocation_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBackgroundLocation_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBackgroundLocation_Tests/Pods-SwiftBackgroundLocation_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		DF2E1AD142B68EC847F92D20 /* Pods_SwiftBackgroundLocation_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftBackgroundLocation_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E105694B9DD33DB1F8E73A4A /* Pods_SwiftBackgroundLocation_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftBackgroundLocation_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E9933EF2B80F3CD4D54C97B5 /* SwiftBackgroundLocation.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = SwiftBackgroundLocation.podspec; path = ../SwiftBackgroundLocation.podspec; sourceTree = "<group>"; };
+		E9933EF2B80F3CD4D54C97B5 /* SwiftBackgroundLocation.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SwiftBackgroundLocation.podspec; path = ../SwiftBackgroundLocation.podspec; sourceTree = "<group>"; };
 		EC8A1C028E5AB9DC6DC7C6D4 /* Pods-SwiftBackgroundLocation_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBackgroundLocation_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBackgroundLocation_Example/Pods-SwiftBackgroundLocation_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		F1F7EC4BE4178437A0B8E612 /* Pods-SwiftBackgroundLocation_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBackgroundLocation_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBackgroundLocation_Tests/Pods-SwiftBackgroundLocation_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		F445AC350301E66D80C899C0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		F445AC350301E66D80C899C0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +101,9 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				395B50721E6C3992009CDC8A /* BackgroundDebug.swift */,
+				395B50731E6C3992009CDC8A /* LocationLogger.swift */,
+				395B50741E6C3992009CDC8A /* Points+Hermite.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -115,7 +124,7 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				607FACEB1AFB9204008FA782 /* BackgroundLocationCacheTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -361,7 +370,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				395B50771E6C3992009CDC8A /* LocationLogger.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				395B50761E6C3992009CDC8A /* BackgroundDebug.swift in Sources */,
+				395B50781E6C3992009CDC8A /* Points+Hermite.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,7 +382,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				607FACEC1AFB9204008FA782 /* BackgroundLocationCacheTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,7 +455,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -483,7 +495,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -497,6 +509,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SwiftBackgroundLocation/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -511,6 +524,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SwiftBackgroundLocation/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
