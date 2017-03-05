@@ -9,6 +9,22 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+Just add in your app delegate:
+```
+    var backgroundLocationManager = BackgroundLocationManager()
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        
+         backgroundLocationManager.startBackground() { result in
+                if case let .Success(location) = result {
+                    LocationLogger().writeLocationToFile(location: location)
+                }
+        }
+
+        return true
+    }
+```
+
 ## Requirements
 
 ## Installation
