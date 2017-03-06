@@ -5,9 +5,31 @@
 [![License](https://img.shields.io/cocoapods/l/SwiftBackgroundLocation.svg?style=flat)](http://cocoapods.org/pods/SwiftBackgroundLocation)
 [![Platform](https://img.shields.io/cocoapods/p/SwiftBackgroundLocation.svg?style=flat)](http://cocoapods.org/pods/SwiftBackgroundLocation)
 
+SwiftBackground is the right choice to work easily and efficiently with Location Manager when your app is terminated or killed. It's based on region monitoring. Demo how it works (blue is normal tracking, red line is region based tracking):
+
+![](https://media.giphy.com/media/xUA7biAFYmwE8IKcDe/source.gif)
+
+
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+Just add in your app delegate:
+```
+    var backgroundLocationManager = BackgroundLocationManager()
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        
+         backgroundLocationManager.startBackground() { result in
+                if case let .Success(location) = result {
+                    LocationLogger().writeLocationToFile(location: location)
+                }
+        }
+
+        return true
+    }
+```
 
 ## Requirements
 
