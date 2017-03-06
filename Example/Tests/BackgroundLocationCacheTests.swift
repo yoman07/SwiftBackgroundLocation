@@ -3,7 +3,7 @@ import Nimble
 import SwiftBackgroundLocation
 import CoreLocation
 
-class TableOfContentsSpec: QuickSpec {
+class BackgroundLocationCacheTests: QuickSpec {
     override func spec() {
         describe("background regions cache test") {
 
