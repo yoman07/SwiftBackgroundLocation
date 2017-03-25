@@ -48,7 +48,7 @@ final public class BackgroundLocationManager: NSObject {
             self?.tryToRefreshPosition()
         }
         
-        self?.tryToRefreshPosition()
+        self.tryToRefreshPosition()
     }
     
     public func stop() {
