@@ -48,9 +48,7 @@ final public class BackgroundLocationManager: NSObject {
             self?.tryToRefreshPosition()
         }
         
-        DispatchQueue.main.async { [weak self] in
-            self?.tryToRefreshPosition()
-        }
+        self?.tryToRefreshPosition()
     }
     
     public func stop() {

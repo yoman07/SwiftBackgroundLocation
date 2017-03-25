@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SwiftBackgroundLocation'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'Efficient and Easy Location Background Monitoring in Swift'
   s.description      = <<-DESC
 Easy Location Background Monitoring based on regions and significant location change.
