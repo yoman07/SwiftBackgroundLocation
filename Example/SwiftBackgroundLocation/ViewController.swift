@@ -65,11 +65,19 @@ class ViewController: UIViewController {
             }
         }
         
-        appDelagete().locationManager.start {[unowned self] result in
-            if case let .Success(location) = result {
-                self.updateLocation(location: location)
+        
+        appDelagete().locationManager.manager(for: .always, completion: { result in
+            if case let .Success(manager) = result {
+                manager.startUpdatingLocation(isHeadingEnabled: true) { [weak self] result in
+                    if case let .Success(locationHeading) = result, let location = locationHeading.location {
+                        self?.updateLocation(location: location)
+                    }
+                }
             }
-        }
+
+
+        })
+        
     }
 
     

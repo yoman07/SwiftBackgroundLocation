@@ -5,7 +5,7 @@ import SwiftBackgroundLocation
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var locationManager = TrackingLocationManager()
+    var locationManager = TrackingHeadingLocationManager()
     var backgroundLocationManager = BackgroundLocationManager()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {

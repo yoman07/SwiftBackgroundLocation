@@ -14,7 +14,7 @@ final public class BackgroundLocationManager: NSObject {
     fileprivate var regionCache: BackgroundLocationCacheable
     fileprivate var listener: BackgroundTrackingListener?
 
-    fileprivate lazy var trackingLocationManager: TrackingLocationManager = TrackingLocationManager()
+    fileprivate lazy var trackingLocationManager: TrackingHeadingLocationManager = TrackingHeadingLocationManager()
     
     fileprivate lazy var locationManager: CLLocationManager = {
         let manager = CLLocationManager()
@@ -48,7 +48,7 @@ final public class BackgroundLocationManager: NSObject {
             self?.tryToRefreshPosition()
         }
         
-        self.tryToRefreshPosition()
+        tryToRefreshPosition()
     }
     
     public func stop() {
@@ -64,10 +64,11 @@ final public class BackgroundLocationManager: NSObject {
 }
 
 extension BackgroundLocationManager {
-    fileprivate func tryToRefreshPosition(listener: Listener? = nil) {
+    fileprivate func tryToRefreshPosition(listener: HeadingLocationListener? = nil) {
         var lastLocation: CLLocation? = nil
         trackingLocationManager.requestLocation {[weak self] result in
-            if case let .Success(location) = result {
+            if case let .Success(headingLocation) = result, let location = headingLocation.location {
+                
                 let theSameLocation = { () -> Bool in
                     guard let l = lastLocation else { return false }
                     return l.coordinate.latitude == location.coordinate.latitude &&  l.coordinate.longitude == location.coordinate.longitude

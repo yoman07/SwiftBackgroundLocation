@@ -21,9 +21,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>$(PRODUCT_NAME) wants to track your location</string>
+	<string>$(PRODUCT_NAME) needs location always usage for recording in background.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>$(PRODUCT_NAME) wants to track your location</string>
+	<string>$(PRODUCT_NAME) needs location when in use for recording in foreground.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
