@@ -6,7 +6,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var locationManager = TrackingHeadingLocationManager()
-    var backgroundLocationManager = BackgroundLocationManager()
+    var backgroundLocationManager = BackgroundLocationManager(regionConfig: RegionConfig(regionRadius: 100.0))
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         
