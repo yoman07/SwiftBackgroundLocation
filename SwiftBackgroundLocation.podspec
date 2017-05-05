@@ -12,5 +12,5 @@ Easy Location Background Monitoring based on regions and significant location ch
   s.social_media_url = 'https://twitter.com/roman_barzyczak'
   s.ios.deployment_target = '9.0'
   s.source_files = 'SwiftBackgroundLocation/Classes/**/*'
-  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.1' }
 end

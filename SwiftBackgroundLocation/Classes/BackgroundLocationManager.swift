@@ -1,9 +1,17 @@
 import CoreLocation
 import UIKit
 
+
+/// Listener for background tracking
 public typealias BackgroundTrackingListener = (Result<CLLocation>) -> ()
+
+
+/// Listener for region
 public typealias RegionListener = (Result<[CLLocation]>) -> ()
 
+
+
+/// Struct for region Config
 public struct RegionConfig {
 	public var distanceToAroundRegions: Double {
 		return regionRadius*Double(maximumNumberOfRegions)/Double.pi
@@ -49,17 +57,25 @@ final public class BackgroundLocationManager: NSObject {
 		self.init(regionCache: BackgroundLocationCache(defaults: userDefaults), regionConfig: regionConfig)
 	}
     
-    public init(regionCache: BackgroundLocationCacheable, regionConfig: RegionConfig) {
+    init(regionCache: BackgroundLocationCacheable, regionConfig: RegionConfig) {
         self.regionCache = regionCache
 		self.regionConfig = regionConfig
     }
     
+    
+    /// Start tracking foregorund
+    ///
+    /// - Parameter backgroundTrackingListener: listener which contains location
     public func start(backgroundTrackingListener: @escaping BackgroundTrackingListener) {
         listener = backgroundTrackingListener
         locationManager.delegate = self
         tryToRefreshPosition()
     }
     
+    
+    /// Start tracking background
+    ///
+    /// - Parameter backgroundTrackingListener: listener which contains location
     public func startBackground(backgroundTrackingListener: @escaping BackgroundTrackingListener) {
         listener = backgroundTrackingListener
 
@@ -72,6 +88,8 @@ final public class BackgroundLocationManager: NSObject {
         tryToRefreshPosition()
     }
     
+    
+    /// Stop tracking
     public func stop() {
         listener = nil
         locationManager.delegate = nil
@@ -153,6 +171,13 @@ extension BackgroundLocationManager {
 
 extension BackgroundLocationManager: CLLocationManagerDelegate {
     
+    
+    /// Invoked when the user enters a monitored region.  This callback will be invoked for every allocated
+    /// CLLocationManager instance with a non-nil delegate that implements this method.
+    ///
+    /// - Parameters:
+    ///   - manager: location manager
+    ///   - region: region
     public func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         let coordinates = regionCache.coordinates(for: region)
         let location =  CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)

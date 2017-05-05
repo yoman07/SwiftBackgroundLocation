@@ -64,6 +64,13 @@ final public class TrackingHeadingLocationManager: NSObject {
     fileprivate var lastHeading: CLHeading?
     
     
+    /// Init for trakcing location manager with heading
+    ///
+    /// - Parameters:
+    ///   - desiredAccuracy: desiredAccuracy
+    ///   - distanceFilter: distanceFilter
+    ///   - allowsBackgroundLocationUpdates: should track location in background
+    ///   - activityType: type of recording activity
     public init(desiredAccuracy: CLLocationAccuracy = kCLLocationAccuracyBestForNavigation, distanceFilter: CLLocationDistance = kCLDistanceFilterNone, allowsBackgroundLocationUpdates: Bool = true, activityType:CLActivityType = .fitness) {
         self.desiredAccuracy = desiredAccuracy
         self.allowsBackgroundLocationUpdates = allowsBackgroundLocationUpdates
@@ -87,6 +94,13 @@ final public class TrackingHeadingLocationManager: NSObject {
         locationManager.requestLocation()
     }
     
+    
+    
+    /// Method with listner
+    ///
+    /// - Parameters:
+    ///   - isHeadingEnabled: possiblity to get location with heading
+    ///   - headingListener: listener which return location with heading if enabled
     public func startUpdatingLocation(isHeadingEnabled:Bool = false, headingListener: @escaping HeadingLocationListener) {
         self.headingListener = headingListener
         locationManager.delegate = self
@@ -94,12 +108,23 @@ final public class TrackingHeadingLocationManager: NSObject {
         self.isHeadingEnabled = isHeadingEnabled
     }
     
+    
+    /// Delegate method, called when newHeading appear
+    ///
+    /// - Parameters:
+    ///   - manager: manager
+    ///   - newHeading: newHeading
     public func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         lastHeading = newHeading
         self.headingListener?(Result.Success(LocationHeading(location: lastLocation, heading: lastHeading)))
     }
     
     
+    /// Method for asking about location status
+    ///
+    /// - Parameters:
+    ///   - status: which status you need, always or whenInUse
+    ///   - completion: completion which return current location manager
     public func manager(for status:LocationAuthorizationStatus, completion: @escaping LocationManagerListener) {
         self.locationManagerListener = completion
         self.requestedStatus = status
@@ -118,6 +143,12 @@ final public class TrackingHeadingLocationManager: NSObject {
         }
     }
     
+    
+    /// Delegate method for getting authorization status
+    ///
+    /// - Parameters:
+    ///   - manager: manager
+    ///   - status: status
     public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if requestedStatus?.authorizationStatus() == status {
             locationManagerListener?(Result.Success(self))
@@ -135,6 +166,8 @@ final public class TrackingHeadingLocationManager: NSObject {
         }
     }
 
+    
+    /// Stop tracking
     public func stop() {
         locationManager.stopUpdatingLocation()
         locationManager.stopUpdatingHeading()
@@ -142,6 +175,11 @@ final public class TrackingHeadingLocationManager: NSObject {
     
 
     
+    
+    /// Enum for getting location permission
+    ///
+    /// - whenInUse: application use location only when in foreground
+    /// - always: application can use location always
     public enum LocationAuthorizationStatus {
         case whenInUse, always
         

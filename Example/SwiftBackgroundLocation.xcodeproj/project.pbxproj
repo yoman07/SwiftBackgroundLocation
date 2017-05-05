@@ -16,7 +16,6 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* BackgroundLocationCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* BackgroundLocationCacheTests.swift */; };
 		FB4241E8641DFEFF9D4BBEA4 /* Pods_SwiftBackgroundLocation_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E105694B9DD33DB1F8E73A4A /* Pods_SwiftBackgroundLocation_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,7 +44,6 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* SwiftBackgroundLocation_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftBackgroundLocation_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* BackgroundLocationCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundLocationCacheTests.swift; sourceTree = "<group>"; };
 		7BFB3915B96221E0EB71191F /* Pods-SwiftBackgroundLocation_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBackgroundLocation_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBackgroundLocation_Tests/Pods-SwiftBackgroundLocation_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		DF2E1AD142B68EC847F92D20 /* Pods_SwiftBackgroundLocation_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftBackgroundLocation_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E105694B9DD33DB1F8E73A4A /* Pods_SwiftBackgroundLocation_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftBackgroundLocation_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,7 +122,6 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* BackgroundLocationCacheTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -384,7 +381,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* BackgroundLocationCacheTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
