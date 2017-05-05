@@ -4,8 +4,23 @@ import UIKit
 public typealias BackgroundTrackingListener = (Result<CLLocation>) -> ()
 public typealias RegionListener = (Result<[CLLocation]>) -> ()
 
+public struct RegionConfig {
+	public var distanceToAroundRegions: Double {
+		return regionRadius*Double(maximumNumberOfRegions)/Double.pi
+	}
+	public let regionRadius: Double
+	public let maximumNumberOfRegions: Int
+	
+	public init(regionRadius: Double = 100.0, maximumNumberOfRegions: Int = 20) {
+		self.regionRadius = regionRadius
+		self.maximumNumberOfRegions = maximumNumberOfRegions
+	}
+}
+
 final public class BackgroundLocationManager: NSObject {
     public var addedRegionsListener: RegionListener?
+	
+	public let regionConfig: RegionConfig
 
     fileprivate var bgTaskIdentifier = "fetchLocation"
     
@@ -26,11 +41,17 @@ final public class BackgroundLocationManager: NSObject {
     
     public convenience override init() {
         guard let userDefaults = UserDefaults(suiteName: Constants.suitName) else { fatalError()}
-        self.init(regionCache: BackgroundLocationCache(defaults: userDefaults))
+		self.init(regionCache: BackgroundLocationCache(defaults: userDefaults), regionConfig: RegionConfig())
     }
+	
+	public convenience init(regionConfig: RegionConfig) {
+		guard let userDefaults = UserDefaults(suiteName: Constants.suitName) else { fatalError()}
+		self.init(regionCache: BackgroundLocationCache(defaults: userDefaults), regionConfig: regionConfig)
+	}
     
-    public init(regionCache: BackgroundLocationCacheable) {
+    public init(regionCache: BackgroundLocationCacheable, regionConfig: RegionConfig) {
         self.regionCache = regionCache
+		self.regionConfig = regionConfig
     }
     
     public func start(backgroundTrackingListener: @escaping BackgroundTrackingListener) {
@@ -54,12 +75,6 @@ final public class BackgroundLocationManager: NSObject {
     public func stop() {
         listener = nil
         locationManager.delegate = nil
-    }
-
-    public struct RegionConfig {
-        public static let distanceToAroundRegions = regionRadius*Double(maximumNumberOfRegions)/Double.pi
-        public static let regionRadius = 100.0
-        public static let maximumNumberOfRegions = 20
     }
 }
 
@@ -88,7 +103,7 @@ extension BackgroundLocationManager {
     fileprivate func startMonitoring(for coordinate: CLLocationCoordinate2D) {
         clearRegions()
         
-        let val = 2*Double.pi/Double(RegionConfig.maximumNumberOfRegions)
+        let val = 2*Double.pi/Double(regionConfig.maximumNumberOfRegions)
         
         let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
         
@@ -96,15 +111,15 @@ extension BackgroundLocationManager {
         locations.append(location)
         
         var regions:[CLCircularRegion] = []
-        for i in 0..<RegionConfig.maximumNumberOfRegions {
+        for i in 0..<regionConfig.maximumNumberOfRegions {
             let identifier = "\(Constants.suitName).regionIdentifier.\(i)"
             let bearing = val*Double(i)
             
-            let coordinate = coordinate.location(for: bearing, and: RegionConfig.distanceToAroundRegions)
+            let coordinate = coordinate.location(for: bearing, and: regionConfig.distanceToAroundRegions)
             
             let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: coordinate.latitude,
                                                                          longitude: coordinate.longitude),
-                                          radius: RegionConfig.regionRadius,
+                                          radius: regionConfig.regionRadius,
                                           identifier: identifier)
             
             
