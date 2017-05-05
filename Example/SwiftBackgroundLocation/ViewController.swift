@@ -152,7 +152,7 @@ class ViewController: UIViewController {
                 })
                 
                 locations.forEach({ location in
-                    let circle = MKCircle(center: location.coordinate, radius: BackgroundLocationManager.RegionConfig.regionRadius)
+                    let circle = MKCircle(center: location.coordinate, radius: self.appDelagete().backgroundLocationManager.regionConfig.regionRadius)
                     circle.title = "regionPlanned"
                     self.mapView.add(circle)
                     self.circles.append(circle)

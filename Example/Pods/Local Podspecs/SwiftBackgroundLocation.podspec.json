@@ -1,6 +1,6 @@
 {
   "name": "SwiftBackgroundLocation",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "summary": "Efficient and Easy Location Background Monitoring in Swift",
   "description": "Easy Location Background Monitoring based on regions and significant location change.",
   "homepage": "https://github.com/yoman07/SwiftBackgroundLocation",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/yoman07/SwiftBackgroundLocation.git",
-    "tag": "0.1.0"
+    "tag": "0.1.1"
   },
   "social_media_url": "https://twitter.com/roman_barzyczak",
   "platforms": {
