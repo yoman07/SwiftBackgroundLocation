@@ -8,7 +8,6 @@ public typealias HeadingLocationListener = (Result<LocationHeading>) -> ()
 
 final public class TrackingHeadingLocationManager: NSObject {
     
-    
     var desiredAccuracy: CLLocationAccuracy {
         didSet {
             locationManager.desiredAccuracy = desiredAccuracy
@@ -35,10 +34,7 @@ final public class TrackingHeadingLocationManager: NSObject {
     
     var isHeadingEnabled: Bool? {
         didSet {
-            guard let isHeadingEnabled = isHeadingEnabled else {
-                return
-            }
-            if isHeadingEnabled {
+            if isHeadingEnabled ?? false {
                 locationManager.startUpdatingHeading()
             } else {
                 locationManager.stopUpdatingHeading()
@@ -78,24 +74,6 @@ final public class TrackingHeadingLocationManager: NSObject {
         self.activityType = activityType
     }
     
-    
-    func startSignificantLocationChanges() {
-        significantLocationManager.delegate = self
-        significantLocationManager.startMonitoringSignificantLocationChanges()
-    }
-    
-    func requestLocation(listener: @escaping HeadingLocationListener) {
-        self.headingListener = listener
-        locationManager.delegate = self
-        
-        if significantLocationManager.delegate == nil {
-            startSignificantLocationChanges()
-        }
-        locationManager.requestLocation()
-    }
-    
-    
-    
     /// Method with listner
     ///
     /// - Parameters:
@@ -107,19 +85,7 @@ final public class TrackingHeadingLocationManager: NSObject {
         locationManager.startUpdatingLocation()
         self.isHeadingEnabled = isHeadingEnabled
     }
-    
-    
-    /// Delegate method, called when newHeading appear
-    ///
-    /// - Parameters:
-    ///   - manager: manager
-    ///   - newHeading: newHeading
-    public func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        lastHeading = newHeading
-        self.headingListener?(Result.Success(LocationHeading(location: lastLocation, heading: lastHeading)))
-    }
-    
-    
+
     /// Method for asking about location status
     ///
     /// - Parameters:
@@ -128,7 +94,11 @@ final public class TrackingHeadingLocationManager: NSObject {
     public func manager(for status:LocationAuthorizationStatus, completion: @escaping LocationManagerListener) {
         self.locationManagerListener = completion
         self.requestedStatus = status
-        
+        if status.isAuthorized(for: CLLocationManager.authorizationStatus()) {
+            locationManagerListener?(Result.Success(self))
+            return
+        }
+
         if status == .always && CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
             self.locationManager.requestWhenInUseAuthorization()
         } else {
@@ -150,7 +120,7 @@ final public class TrackingHeadingLocationManager: NSObject {
     ///   - manager: manager
     ///   - status: status
     public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if requestedStatus?.authorizationStatus() == status {
+        if requestedStatus?.isAuthorized(for: status) ?? false {
             locationManagerListener?(Result.Success(self))
             return
         }
@@ -165,17 +135,32 @@ final public class TrackingHeadingLocationManager: NSObject {
             locationManagerListener?(Result.Error(LocationAuthorizationError.userDenied))
         }
     }
-
+    
     
     /// Stop tracking
     public func stop() {
+        lastHeading = nil
+        lastLocation = nil
         locationManager.stopUpdatingLocation()
         locationManager.stopUpdatingHeading()
     }
     
+    
+    func requestLocation(listener: @escaping HeadingLocationListener) {
+        self.headingListener = listener
+        locationManager.delegate = self
+        
+        if significantLocationManager.delegate == nil {
+            startSignificantLocationChanges()
+        }
+        locationManager.requestLocation()
+    }
+    
+    private func startSignificantLocationChanges() {
+        significantLocationManager.delegate = self
+        significantLocationManager.startMonitoringSignificantLocationChanges()
+    }
 
-    
-    
     /// Enum for getting location permission
     ///
     /// - whenInUse: application use location only when in foreground
@@ -191,19 +176,44 @@ final public class TrackingHeadingLocationManager: NSObject {
                 return .authorizedWhenInUse
             }
         }
+        
+        func isAuthorized(for status: CLAuthorizationStatus) -> Bool {
+            if status == authorizationStatus() {
+                return true
+            }
+            
+            if status == .authorizedAlways && self == .whenInUse {
+                return true
+            }
+            
+            return false
+        }
     }
     
+    
+    /// Errors for authorization
+    ///
+    /// - cantGetAlways: couldn't get always authorization
+    /// - userDenied: user clicked denied
     enum LocationAuthorizationError: Error {
         case cantGetAlways, userDenied
     }
 }
 
+
+/// Struct which contain location and heading, both can be nil
 public struct LocationHeading {
     public var location: CLLocation?
     public var heading: CLHeading?
 }
 
 extension TrackingHeadingLocationManager: CLLocationManagerDelegate {
+    
+    /// Delegate for LocationManager Success for getting location
+    ///
+    /// - Parameters:
+    ///   - manager: locationManager
+    ///   - locations: location returned from locationManager
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.max(by: { (location1, location2) -> Bool in
             return location1.timestamp.timeIntervalSince1970 < location2.timestamp.timeIntervalSince1970}) else { return }
@@ -216,7 +226,23 @@ extension TrackingHeadingLocationManager: CLLocationManagerDelegate {
         }
     }
     
+    
+    /// Delegate for LocationManager errror
+    ///
+    /// - Parameters:
+    ///   - manager: locationManager
+    ///   - error: error for getting location
     public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
+    }
+    
+    /// Delegate method, called when newHeading appear
+    ///
+    /// - Parameters:
+    ///   - manager: manager
+    ///   - newHeading: newHeading
+    public func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        lastHeading = newHeading
+        self.headingListener?(Result.Success(LocationHeading(location: lastLocation, heading: lastHeading)))
     }
 }

@@ -14,12 +14,19 @@ class ViewController: UIViewController {
 
     var circles: [MKCircle] = []
     
+    @IBOutlet weak var localizeMeButton: LocalizeMeButton!
+    
+    lazy var localizeMeManager: TrackingHeadingLocationManager = {
+       return TrackingHeadingLocationManager()
+    }()
+    
     override func viewDidLoad() {
         mapView.delegate = self
         super.viewDidLoad()
         
         BackgroundDebug().print()
-
+        
+        setUpLocalizeMeButton()
     }
     
     @IBAction func start(_ sender: Any) {
@@ -48,7 +55,7 @@ class ViewController: UIViewController {
     @IBAction func readLog(_ sender: Any) {
         if let locations = logger.readLocation() {
             drawLocation(locations: locations)
-            centerCamera(to: locations.last!)
+            mapView.centerCamera(to: locations.last)
         }
     }
     
@@ -74,14 +81,11 @@ class ViewController: UIViewController {
                     }
                 }
             }
-
-
         })
         
     }
 
     
-    var isCenter = false
     
     private func updateBackgroundLocation(location: CLLocation) {
         backgroundLocations.append(location)
@@ -105,21 +109,7 @@ class ViewController: UIViewController {
         }
 
         drawLocation(locations: locations)
-        centerCamera(to: location)
         
-    }
-    
-    private func centerCamera(to location: CLLocation) {
-        if !isCenter {
-            let camera = mapView.camera
-            camera.centerCoordinate = location.coordinate
-            
-            mapView.camera = camera
-            let viewRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 500, 500)
-            
-            mapView.setRegion(viewRegion, animated: true)
-            isCenter = true
-        }
     }
     
     func drawLocation(locations: [CLLocation]) {
@@ -185,5 +175,9 @@ extension ViewController: MKMapViewDelegate {
         
         return renderer
     }
+    
 
 }
+
+
+
