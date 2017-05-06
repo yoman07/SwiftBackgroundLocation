@@ -32,19 +32,22 @@ Just add in your app delegate for background location:
     }
 ```
 
-Getting permission (.always or .whenInUse) for location tracking:
+Getting permission (`.always` or `.whenInUse`) for location tracking:
 
-```locationManager.manager(for: .always, completion: { result in
+```
+locationManager.manager(for: .always, completion: { result in
             if case let .Success(manager) = result {
                 
             }
 
 
-})```
+})
+```
 
 Location tracking with listener:
 
-```locationManager.manager(for: .always, completion: { result in
+```
+locationManager.manager(for: .always, completion: { result in
             if case let .Success(manager) = result {
                 manager.startUpdatingLocation(isHeadingEnabled: true) { [weak self] result in
                     if case let .Success(locationHeading) = result, let location = locationHeading.location {
@@ -53,7 +56,8 @@ Location tracking with listener:
                 }
             }
 
-})```
+})
+```
 
 
 ## Requirements
