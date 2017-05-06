@@ -59,6 +59,8 @@ locationManager.manager(for: .always, completion: { result in
 })
 ```
 
+Getting heading needs additional hardware and hence wont work on simulator.
+
 
 ## Requirements
 
