@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3944C7BE1EBDC44100972519 /* LocalizeMeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944C7BD1EBDC44100972519 /* LocalizeMeButton.swift */; };
+		3944C7C11EBDC94400972519 /* MKMapView+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944C7C01EBDC94400972519 /* MKMapView+Center.swift */; };
+		3944C7C31EBDD56B00972519 /* ViewController+LocalizeMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944C7C21EBDD56B00972519 /* ViewController+LocalizeMe.swift */; };
 		395B50761E6C3992009CDC8A /* BackgroundDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395B50721E6C3992009CDC8A /* BackgroundDebug.swift */; };
 		395B50771E6C3992009CDC8A /* LocationLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395B50731E6C3992009CDC8A /* LocationLogger.swift */; };
 		395B50781E6C3992009CDC8A /* Points+Hermite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395B50741E6C3992009CDC8A /* Points+Hermite.swift */; };
@@ -30,6 +33,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3944C7BD1EBDC44100972519 /* LocalizeMeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizeMeButton.swift; sourceTree = "<group>"; };
+		3944C7C01EBDC94400972519 /* MKMapView+Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MKMapView+Center.swift"; sourceTree = "<group>"; };
+		3944C7C21EBDD56B00972519 /* ViewController+LocalizeMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+LocalizeMe.swift"; sourceTree = "<group>"; };
 		395B50721E6C3992009CDC8A /* BackgroundDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundDebug.swift; sourceTree = "<group>"; };
 		395B50731E6C3992009CDC8A /* LocationLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationLogger.swift; sourceTree = "<group>"; };
 		395B50741E6C3992009CDC8A /* Points+Hermite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Points+Hermite.swift"; sourceTree = "<group>"; };
@@ -73,6 +79,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3944C7BC1EBDC43700972519 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3944C7BD1EBDC44100972519 /* LocalizeMeButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3944C7BF1EBDC93A00972519 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3944C7C01EBDC94400972519 /* MKMapView+Center.swift */,
+				3944C7C21EBDD56B00972519 /* ViewController+LocalizeMe.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +128,8 @@
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
+				3944C7BF1EBDC93A00972519 /* Extensions */,
+				3944C7BC1EBDC43700972519 /* Views */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
 			name = "Example for SwiftBackgroundLocation";
@@ -369,9 +394,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3944C7BE1EBDC44100972519 /* LocalizeMeButton.swift in Sources */,
+				3944C7C31EBDD56B00972519 /* ViewController+LocalizeMe.swift in Sources */,
 				395B50771E6C3992009CDC8A /* LocationLogger.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				395B50761E6C3992009CDC8A /* BackgroundDebug.swift in Sources */,
+				3944C7C11EBDC94400972519 /* MKMapView+Center.swift in Sources */,
 				395B50781E6C3992009CDC8A /* Points+Hermite.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
