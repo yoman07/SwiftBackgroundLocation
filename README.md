@@ -15,7 +15,8 @@ SwiftBackground is the right choice to work easily and efficiently with Location
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-Just add in your app delegate:
+Just add in your app delegate for background location:
+
 ```
     var backgroundLocationManager = BackgroundLocationManager()
     
@@ -31,6 +32,30 @@ Just add in your app delegate:
     }
 ```
 
+Getting permission (.always or .whenInUse) for location tracking:
+
+```locationManager.manager(for: .always, completion: { result in
+            if case let .Success(manager) = result {
+                
+            }
+
+
+})```
+
+Location tracking with listener:
+
+```locationManager.manager(for: .always, completion: { result in
+            if case let .Success(manager) = result {
+                manager.startUpdatingLocation(isHeadingEnabled: true) { [weak self] result in
+                    if case let .Success(locationHeading) = result, let location = locationHeading.location {
+                        self?.updateLocation(location: location)
+                    }
+                }
+            }
+
+})```
+
+
 ## Requirements
 
 ## Installation
@@ -41,6 +66,17 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod "SwiftBackgroundLocation"
 ```
+
+You must add NSLocationAlwaysUsageDescription or NSLocationWhenInUseUsageDescription key to your project’s Info.plist containing the message to be displayed to the user at the prompt. If you need always location, you should add both.
+
+```<key>NSLocationAlwaysUsageDescription</key>
+<string>$(PRODUCT_NAME) needs location always usage for recording in background./string>```
+
+```<key>NSLocationWhenInUseUsageDescription</key>
+<string>$(PRODUCT_NAME) needs location when in use for recording in foreground.</string>```
+
+The user will not be prompted unless one of these are added to the Info.plist.
+
 
 ## Author
 
