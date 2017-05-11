@@ -32,6 +32,20 @@ Just add in your app delegate for background location:
     }
 ```
 
+You can set up radius for background location:
+
+import UIKit
+import SwiftBackgroundLocation
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+```
+    let regionConfig = RegionConfig(regionRadius: 25.0)
+    var backgroundLocationManager = BackgroundLocationManager(regionConfig: regionConfig) 
+    ```
+
+
 Getting permission (`.always` or `.whenInUse`) for location tracking:
 
 ```
@@ -91,3 +105,18 @@ yoman07, roman.barzyczak+web@gmail.com
 ## License
 
 SwiftBackgroundLocation is available under the MIT license. See the LICENSE file for more info.
+
+### Contact & Questions
+
+If you have any questions, fell free to send me a mail.
+You can also fork this project, or open an issue 
+
+### Contributions
+SwiftBackgroundLocation is currently lead by:
+
+-  Roman Barzyczak  (`GitHub <https://github.com/yoman07`__  `Roman Barzyczak <https://github.com/yoman07>`__)
+
+with contributions from:
+
+- `Andrew Sowers <https://github.com/asowers1>`__
+
