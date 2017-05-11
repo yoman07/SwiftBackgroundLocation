@@ -43,8 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 ```
     let regionConfig = RegionConfig(regionRadius: 25.0)
     var backgroundLocationManager = BackgroundLocationManager(regionConfig: regionConfig) 
-    ```
-
+    
+```
 
 Getting permission (`.always` or `.whenInUse`) for location tracking:
 
