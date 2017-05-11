@@ -34,12 +34,6 @@ Just add in your app delegate for background location:
 
 You can set up radius for background location:
 
-import UIKit
-import SwiftBackgroundLocation
-
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
 ```
     let regionConfig = RegionConfig(regionRadius: 25.0)
     var backgroundLocationManager = BackgroundLocationManager(regionConfig: regionConfig) 
