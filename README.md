@@ -83,11 +83,15 @@ pod "SwiftBackgroundLocation"
 
 You must add NSLocationAlwaysUsageDescription or NSLocationWhenInUseUsageDescription key to your project’s Info.plist containing the message to be displayed to the user at the prompt. If you need always location, you should add both.
 
-```<key>NSLocationAlwaysUsageDescription</key>
-<string>$(PRODUCT_NAME) needs location always usage for recording in background./string>```
+```
+<key>NSLocationAlwaysUsageDescription</key>
+<string>$(PRODUCT_NAME) needs location always usage for recording in background./string>
+```
 
-```<key>NSLocationWhenInUseUsageDescription</key>
-<string>$(PRODUCT_NAME) needs location when in use for recording in foreground.</string>```
+```
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>$(PRODUCT_NAME) needs location when in use for recording in foreground.</string>
+```
 
 The user will not be prompted unless one of these are added to the Info.plist.
 
