@@ -17,7 +17,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 Just add in your app delegate for background location:
 
-```
+```swift
     var backgroundLocationManager = BackgroundLocationManager()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
@@ -34,7 +34,7 @@ Just add in your app delegate for background location:
 
 You can set up radius for background location:
 
-```
+```swift
     let regionConfig = RegionConfig(regionRadius: 25.0)
     var backgroundLocationManager = BackgroundLocationManager(regionConfig: regionConfig) 
     
@@ -42,7 +42,7 @@ You can set up radius for background location:
 
 Getting permission (`.always` or `.whenInUse`) for location tracking:
 
-```
+```swift
 locationManager.manager(for: .always, completion: { result in
             if case let .Success(manager) = result {
                 
@@ -54,7 +54,7 @@ locationManager.manager(for: .always, completion: { result in
 
 Location tracking with listener:
 
-```
+```swift
 locationManager.manager(for: .always, completion: { result in
             if case let .Success(manager) = result {
                 manager.startUpdatingLocation(isHeadingEnabled: true) { [weak self] result in
