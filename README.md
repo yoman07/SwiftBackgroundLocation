@@ -85,7 +85,7 @@ You must add NSLocationAlwaysUsageDescription or NSLocationWhenInUseUsageDescrip
 
 ```
 <key>NSLocationAlwaysUsageDescription</key>
-<string>$(PRODUCT_NAME) needs location always usage for recording in background./string>
+<string>$(PRODUCT_NAME) needs location always usage for recording in background.</string>
 ```
 
 ```
